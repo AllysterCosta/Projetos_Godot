@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scripts/platMovel.gd" type="Script" id=1]
+[ext_resource path="res://assets/Tiles/grassCliffLeft.png" type="Texture" id=2]
+[ext_resource path="res://assets/Tiles/grassMid.png" type="Texture" id=3]
+[ext_resource path="res://assets/Tiles/grassCliffRight.png" type="Texture" id=4]
+
+[sub_resource type="Curve2D" id=1]
+
+bake_interval = 5.0
+_data = {
+"points": Vector2Array( 0, 0, 0, 0, 0.535294, -0.366287, -190.496, 0.163242, 234.232, -23.1297, 559.708, -350.752, 0, 0, 0, 0, 1190, 0.00695276 )
+}
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -104.011, -34.5214, 102.763, -34.5214, 104.713, -7.69928, 97.3983, 9.85699, 79.3544, 24.9749, 64.7241, 30.3393, 40.3405, 35.2161, -38.175, 34.7284, -59.6327, 32.29, -74.7506, 27.9009, -89.8685, 18.6351, -98.6467, 7.90631, -104.499, -4.77319 )
+
+[node name="platMovel" type="Path2D"]
+
+transform/pos = Vector2( 1785, 595 )
+curve = SubResource( 1 )
+
+[node name="follow" type="PathFollow2D" parent="."]
+
+transform/pos = Vector2( 0.535294, -0.366287 )
+offset = 0.0
+h_offset = 0.0
+v_offset = 0.0
+rotate = false
+cubic_interp = true
+loop = true
+lookahead = 4.0
+
+[node name="body" type="KinematicBody2D" parent="follow"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+
+[node name="sprite" type="Sprite" parent="follow/body"]
+
+transform/pos = Vector2( -70, 0 )
+texture = ExtResource( 2 )
+
+[node name="sprite1" type="Sprite" parent="follow/body"]
+
+texture = ExtResource( 3 )
+
+[node name="sprite2" type="Sprite" parent="follow/body"]
+
+transform/pos = Vector2( 70, 0 )
+texture = ExtResource( 4 )
+
+[node name="poly" type="CollisionPolygon2D" parent="follow/body"]
+
+build_mode = 0
+polygon = Vector2Array( -104.011, -34.5214, 102.763, -34.5214, 104.713, -7.69928, 97.3983, 9.85699, 79.3544, 24.9749, 64.7241, 30.3393, 40.3405, 35.2161, -38.175, 34.7284, -59.6327, 32.29, -74.7506, 27.9009, -89.8685, 18.6351, -98.6467, 7.90631, -104.499, -4.77319 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+

@@ -1,0 +1,268 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Scripts/Hero.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Hero/Personagens.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/AttackArea.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Hero/L.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Hero/L1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Hero/L2.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Hero/Branco.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Hero/R.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Hero/R1.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Hero/R2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Hero/U.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Hero/U1.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Hero/U2.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Hero/D.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Hero/D1.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Hero/D2.png" type="Texture" id=17]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "down_stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "down_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "left_stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "left_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "right_stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "right_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 8 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "up_stand"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 15 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "up_walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 9, 10 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 12.902
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "up",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "down",
+"speed": 10.0
+} ]
+
+[node name="Hero" type="KinematicBody2D"]
+editor/display_folded = true
+script = ExtResource( 1 )
+
+[node name="Body" type="Sprite" parent="."]
+position = Vector2( 0, -18.5 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 25
+
+[node name="Head" type="Sprite" parent="."]
+position = Vector2( 0, -18.5 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+hframes = 25
+frame = 16
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="AnimMove" type="AnimationPlayer" parent="."]
+autoplay = "down_stand"
+anims/down_stand = SubResource( 2 )
+anims/down_walk = SubResource( 3 )
+anims/left_stand = SubResource( 4 )
+anims/left_walk = SubResource( 5 )
+anims/right_stand = SubResource( 6 )
+anims/right_walk = SubResource( 7 )
+anims/up_stand = SubResource( 8 )
+anims/up_walk = SubResource( 9 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 512
+limit_bottom = 512
+editor_draw_drag_margin = true
+script = ExtResource( 3 )
+
+[node name="SwitchTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AttackArea" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Up" type="Area2D" parent="AttackArea"]
+editor/display_folded = true
+
+[node name="Shape" type="CollisionShape2D" parent="AttackArea/Up"]
+position = Vector2( 1.00108e-006, -20.4633 )
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="Down" type="Area2D" parent="AttackArea"]
+editor/display_folded = true
+
+[node name="Shape" type="CollisionShape2D" parent="AttackArea/Down"]
+position = Vector2( 1.00108e-006, 17.0764 )
+rotation = 1.5708
+shape = SubResource( 10 )
+
+[node name="Left" type="Area2D" parent="AttackArea"]
+editor/display_folded = true
+position = Vector2( -24, -19 )
+
+[node name="Shape" type="CollisionShape2D" parent="AttackArea/Left"]
+position = Vector2( 1.00108e-006, 17.0764 )
+shape = SubResource( 10 )
+
+[node name="Right" type="Area2D" parent="AttackArea"]
+editor/display_folded = true
+position = Vector2( -24, -19 )
+
+[node name="Shape" type="CollisionShape2D" parent="AttackArea/Right"]
+position = Vector2( 47, 17 )
+shape = SubResource( 10 )
+
+[node name="Sword" type="AnimatedSprite" parent="AttackArea"]
+position = Vector2( 0, -18.5 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 11 )
+animation = "down"
+frame = 3
+[connection signal="timeout" from="SwitchTimer" to="." method="_on_SwitchTimer_timeout"]

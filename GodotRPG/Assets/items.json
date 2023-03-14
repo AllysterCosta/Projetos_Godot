@@ -1,0 +1,22 @@
+{
+  "items": {
+    "5": {
+      "max_slot" : 8,
+      "info": "Pedra Preciosa"
+    },
+    "20": {
+      "max_slot": 1,
+      "info": "Espada Sagrada",
+      "damage": 1.0
+    },
+    "13": {
+      "max_slot": 1,
+      "info": "Chave Dourada"
+    },
+    "43": {
+      "max_slot": 1,
+      "info": "Elmo de Ferro",
+      "defense": 0.8
+    }
+  }
+}

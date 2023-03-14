@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/Chunk.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/ChunkSensors.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Maps/World_0x0.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Chest.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Door.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Barrel.tscn" type="PackedScene" id=6]
+
+[node name="Chunk0x0" type="YSort" index="0"]
+
+sort_enabled = true
+script = ExtResource( 1 )
+index = Vector2( 0, 0 )
+
+[node name="ChunkSensors" parent="." index="0" instance=ExtResource( 2 )]
+
+left = true
+right = true
+
+[node name="World_0x0" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Chest" parent="." index="2" instance=ExtResource( 4 )]
+
+id = 20
+qty = 1
+uid = 1
+
+[node name="Door1" parent="." index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 240, 284 )
+to_world = "World"
+to_index = Vector2( -1, 0 )
+to_door = 1
+out_dir = Vector2( 0, 1 )
+
+[node name="Barrel" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( 199, 299 )
+
+

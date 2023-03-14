@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Barrel.gd" type="Script" id=1]
+[ext_resource path="res://Assets/barril.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 7.44376
+height = 6.58862
+
+[node name="Barrel" type="StaticBody2D" index="0"]
+
+position = Vector2( 193, 285 )
+scale = Vector2( 1.1, 1.1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+ids = [ 5, 20 ]
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+position = Vector2( -3.63637, -0.909088 )
+texture = ExtResource( 2 )
+hframes = 2
+_sections_unfolded = [ "Animation" ]
+
+[node name="Shape" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( -4.37444, 6.1926 )
+rotation = 1.5708
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+
